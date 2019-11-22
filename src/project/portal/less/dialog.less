@@ -1,0 +1,93 @@
+/*弹窗进入*/
+@keyframes animateDialog {
+  0%{
+    opacity: 0;
+    top:200%;
+  }
+  100%{
+    opacity: 1;
+    top:50%;
+  }
+}
+@keyframes animateMask {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0.7;
+  }
+}
+.animateDialog{
+  animation:animateDialog 1.5s;
+}
+.animateMask{
+  animation:animateMask 1.5s;
+}
+
+
+
+
+
+/*弹窗离开*/
+@keyframes animateDialogLeave {
+  0%{
+    opacity: 1;
+    top:50%;
+  }
+  100%{
+    opacity: 0;
+    top:200%;
+  }
+}
+@keyframes animateMaskLeave {
+  0%{
+    opacity: 0.7;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+.animateDialogLeave{
+  animation:animateDialogLeave 1.5s;
+}
+.animateMaskLeave{
+  animation:animateMaskLeave 1.5s;
+}
+
+
+
+
+.dialog-mask{
+  width:100%;
+  height:100%;
+  background:#000;
+  opacity: .7;
+  position: fixed;
+  left:0;
+  top:0;
+  z-index:999;
+}
+.dialogBox{
+  width:650px;
+  height:400px;
+  position: fixed;
+  z-index:1000;
+  left:50%;
+  top:50%;
+  color:#000;
+  background:#fff;
+  margin-left:-325px;
+  margin-top: -200px;
+  .dialog-header{
+    text-align: center;
+  }
+  .dialog-content{
+    min-height:300px;
+  }
+  .dialog-footer{
+    text-align: center;
+  }
+}
+
+
+

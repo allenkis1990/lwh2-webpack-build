@@ -1,0 +1,7 @@
+/*@import "style2.css";*/
+body{
+    background:red;
+}
+.class1{color:red;transform:skew(50deg)}
+.bgImg{background-image:url('../images/loading.gif');width:100px;height:89px;}
+.htmlImg{width:100px;height:89px;}
