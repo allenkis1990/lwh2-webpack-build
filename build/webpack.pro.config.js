@@ -23,6 +23,7 @@ function getExports(project){
     let cacheGroups = {}
     let plugins = []
     let alias = {}
+    alias[`@mods`] = path.resolve(__dirname,`${config.mainDir}/${config.mods}`)
     config.apps.forEach((app)=>{
         var dirName = ''
         if(config.apps.length>1){

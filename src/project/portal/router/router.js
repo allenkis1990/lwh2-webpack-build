@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 import Root from '@portal/views/root/root.vue'
-
+import {Routers} from '@portal/utils/mod-loader'
 // meta: {
 //     keepAlive: false // 不需要被缓存
 // },
@@ -24,6 +24,7 @@ export default new VueRouter({
             name:'root',
             component: Root,
             children: [
+                ...Routers,
                 {
                     name: 'home',
                     path: 'home',

@@ -31,6 +31,7 @@ function getExports(project){
     let cacheGroups = {}
     let plugins = []
     let alias = {}
+    alias[`@mods`] = path.resolve(__dirname,`${config.mainDir}/${config.mods}`)
     let rules = []
     config.apps.forEach((app)=>{
         entry[`${app}/app`] = [path.resolve(__dirname,`${config.mainDir}/${project}/${app}/main.js`),path.resolve(__dirname,'dev-client.js')]

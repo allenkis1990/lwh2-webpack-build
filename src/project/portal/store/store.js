@@ -5,7 +5,7 @@ import {mutations} from '@portal/store/mutations'
 import {getters} from '@portal/store/getters'
 import {actions} from '@portal/store/actions'
 import {modules} from '@portal/store/modules'
-
+import {Stores} from '@portal/utils/mod-loader'
 
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -16,6 +16,7 @@ export default new Vuex.Store({
     getters,
     actions,
     modules:{
+        ...Stores,
         ...modules
     }
 })

@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development && node build/dev-server.js",
+    "dev": "npm run copyMods && set NODE_ENV=development && node build/dev-server.js",
     "design": "set NODE_ENV=development && node build/dev-server.js --design",
     "dev:dist": "set NODE_ENV=development && node build/pro-server.js --devdist",
-    "build:dist": "set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js --devdist",
-    "build": "set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js"
+    "build:dist": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js --devdist",
+    "build": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js",
+    "copyMods":"cnpm install && node build/task/copyMods.js && node build/task/createModsLoader.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@liuweiheng19906666/lwh-demo2": "^1.0.1",
     "art-template": "^4.13.2",
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
@@ -30,6 +32,7 @@
     "clean-webpack-plugin": "^1.0.0",
     "colors": "^1.3.3",
     "connect-history-api-fallback": "^1.6.0",
+    "copy-dir": "^1.2.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "element-ui": "^2.6.1",
