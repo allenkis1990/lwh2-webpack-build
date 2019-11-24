@@ -1,24 +1,20 @@
+###  vue工程脚手架  作者Allen Liu github主页：https://github.com/allenkis1990/lwh2-webpack-build
 
-###  运行npm install安装工程依赖
-###  config文件夹下config.js为项目配置文件可以更改host port
+###  主要功能点
+###  (1):拉取node_modules文件下名为@liuweiheng19906666的包下的模块到src文件夹下的parentMods文件夹，作为项目里的复用代码
+###  (2):如果需要修改@parentMods里的文件，差异化再mods文件夹下做，文件结构要和parentMods相同，mods下的文件会覆盖parentMods
+###  (3):每个模块都包含router,component,store,style,views,这些模块都是独立工程开发并且发布成npm包
+###  (4):每个模块里都有一个.modHome的文件用来区分哪个app需要引用模块
+###  (5):主要开发代码在src的project文件夹里做，并且可以使用mods下的所有component，store，router
+###  (6):静态页面开发目录是design目录
 
-###  vue项目开发环境：
-###(1) vue项目开发主要文件夹为projects文件夹，底下的子文件夹为每个子项目（project1,project2）
-###(2) 当子项目中依赖的文件找不到会去parentProject这个母版文件夹下去找
-###(3) 运行npm run dev会默认运行projects文件夹下的第一个子项目 npm run dev -- --project=project2(子项目文件夹名)可以指定运行项目
-###(4) 浏览器输入默认开发环境地址127.0.0.1:8080
-
-###  静态页面开发环境：
-###(1) 静态页面开发主要文件夹为design文件夹，底下的子文件夹为每个子项目（project1,project2）
-###(2) 当子项目中依赖的文件找不到会去designParent这个母版文件夹下去找
-###(3) 运行npm run design会默认运行design文件夹下的第一个子项目 npm run design -- --project=project2(子项目文件夹名)可以指定运行项目
-###(4) 浏览器输入默认静态页开发环境地址127.0.0.1:8181 如果要访问portal下的test1.vue那么就是输入127.0.0.1:8181/portal/?page=test1
+###   npm命令
+###   (1):npm run dev运行开发环境
+###   (2):npm run design运行静态页面开发环境
+###   (3):npm run build打包生成dist代码
+###   (4):npm run build:dist:打包生成dist代码(如果需要把dist代码放本地跑起来需要用这个打包)
+###   (5):npm run dev:dist运行dist文件夹下的代码
+###   (6):npm run copyMods运行npm install并且从node_modules下的@liuweiheng19906666文件夹下拉包
 
 
-###  打包
-###(1) npm run pro默认打包projects下的第一个子项目,npm run pro -- --project=project2打包指定子项目
-###(2) npm run build 打包projects下的所有子项目
-###(3) dist文件夹下是打包后的代码
 
-### 运行压缩后的代码
-npm run dev:dist 详情见pro-server.js
