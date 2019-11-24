@@ -24,6 +24,7 @@ function getExports(project){
     let plugins = []
     let alias = {}
     alias[`@mods`] = path.resolve(__dirname,`${config.mainDir}/${config.mods}`)
+    alias[`@parentMods`] = path.resolve(__dirname,`${config.mainDir}/${config.parentMods}`)
     config.apps.forEach((app)=>{
         var dirName = ''
         if(config.apps.length>1){
@@ -135,7 +136,18 @@ function getExports(project){
                         loader:'vue-loader'
                     }
                 },
-
+                {
+                    test:/\.(js|vue)$/,
+                    use:{
+                        loader:'notFoudLoader',
+                        options:{
+                            mainDir:config.mainDir.replace('../',''),
+                            project:project
+                        }
+                    },
+                    exclude:[path.resolve(__dirname,'..',`${config.dist}`),/node_modules/],
+                    include:[path.resolve(__dirname,`${config.mainDir}`)]
+                },
                 //解析html页面上的img标签 但是htmlWebpackPlugin.options.title无法读取 可用express静态资源解决
                 {
                     test:/\.(html|htm)/,

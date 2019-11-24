@@ -42,30 +42,10 @@ function loader(source){
 
     //来自哪个项目从外面传进来
     var project = options.project
-    // console.log(project,77);
-    // console.log(project);
     if(requireMatchs.length||importMatchs.length||importStyleMatchs.length||srcMatchs.length||bgMatchs.length||importAsyncMatchs.length){
-        var alias
-        if(!buildAll){
-            //非build-all的时候就直接取alias
-            alias = require('../../webpack.pro.config.js').resolve.alias
-        } else {
-            //build-all的时候根据是哪个project来取相应的alias
-            var webpackConfigArr = require('../../webpack.buildAll.config.js')
-            var currentWebpackConfig = findCurrentWebpackConfig(webpackConfigArr,project)
-            // console.log(currentWebpackConfig,3333);
-            if(currentWebpackConfig){
-                alias = currentWebpackConfig.resolve.alias
-                // console.log(alias,12311);
-            }
-        }
+        var alias = require('../../webpack.pro.config.js').resolve.alias
         //console.log(alias);
-        moduleMatchs = moduleMatchs.concat(requireMatchs)
-        moduleMatchs = moduleMatchs.concat(importMatchs)
-        moduleMatchs = moduleMatchs.concat(importStyleMatchs)
-        moduleMatchs = moduleMatchs.concat(srcMatchs)
-        moduleMatchs = moduleMatchs.concat(bgMatchs)
-        moduleMatchs = moduleMatchs.concat(importAsyncMatchs)
+        moduleMatchs = [].concat(requireMatchs,importMatchs,importStyleMatchs,srcMatchs,bgMatchs,importAsyncMatchs)
         moduleMatchs.forEach((item)=>{
             // console.log(item,'kkk');
             var filePath
@@ -77,16 +57,16 @@ function loader(source){
                 filePath = item.match(/['"](.*)['"]/g)[0].replace(/('|")/g,'')
             }
             // console.log(filePath,886);
-            var aliasKeys = Object.keys(alias)
+            var aliasKeys = Object.keys(alias).filter((ali)=>{return ali==='@mods'})
             var firstWord = filePath.split('/')[0]
             var aliasKeysIndex
             var parentAliasKey
             if(firstWord.indexOf('~')>-1){
                 aliasKeysIndex = aliasKeys.indexOf(firstWord.replace('~',''))
-                parentAliasKey = '~@parent'
+                parentAliasKey = '~@parentMods'
             } else {
                 aliasKeysIndex = aliasKeys.indexOf(firstWord)
-                parentAliasKey = '@parent'
+                parentAliasKey = '@parentMods'
             }
             if(aliasKeysIndex>-1){
                 var aliasKey = aliasKeys[aliasKeysIndex]
@@ -98,24 +78,12 @@ function loader(source){
                     // console.log(aa,'normal');
                 }catch (e){
                     // console.log(fullPath,'err')
-                    var parentPath = `${parentAliasKey}/${aliasKey.replace('@','')}${path}`
+                    var parentPath = `${parentAliasKey}/${path}`
                     //console.log(parentPath);
                     source = source.replace(new RegExp(filePath,'ig'),parentPath)
-                    // if(/\/\*.*?\*\//.test(item)){
-                    //     console.log(source);
-                    // }
                 }
                 //console.log(fullPath);
             }
-
-            //console.log(aliasKeys.indexOf(filePath.split('/')[0]),'index');
-            //var app = filePath.match()
-            //try{
-            //
-            //}catch(e){
-            //
-            //}
-            // console.log(filePath,12);
         })
     }
     //console.log(this.context);

@@ -6,8 +6,8 @@ let deleteDist = require('../task/deleteDist')
 let path = require('path')
 
 let config = {
-    //mods:'mods',
-    mods:'parentMods',
+    mods:'mods',
+    //mods:'parentMods',
     parentMods:'parentMods',
     packageDirName:'@liuweiheng19906666',
     isDesign:argv.design,

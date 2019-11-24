@@ -32,6 +32,7 @@ function getExports(project){
     let plugins = []
     let alias = {}
     alias[`@mods`] = path.resolve(__dirname,`${config.mainDir}/${config.mods}`)
+    alias[`@parentMods`] = path.resolve(__dirname,`${config.mainDir}/${config.parentMods}`)
     let rules = []
     config.apps.forEach((app)=>{
         entry[`${app}/app`] = [path.resolve(__dirname,`${config.mainDir}/${project}/${app}/main.js`),path.resolve(__dirname,'dev-client.js')]
@@ -124,6 +125,18 @@ function getExports(project){
                     use: {
                         loader:'vue-loader'
                     }
+                },
+                {
+                    test:/\.(js|vue)$/,
+                    use:{
+                        loader:'notFoudLoader',
+                        options:{
+                            mainDir:config.mainDir.replace('../',''),
+                            project:project
+                        }
+                    },
+                    exclude:[path.resolve(__dirname,'..',`${config.dist}`),/node_modules/],
+                    include:[path.resolve(__dirname,`${config.mainDir}`)]
                 },
                 {
                     test:/\.(html|htm)/,
