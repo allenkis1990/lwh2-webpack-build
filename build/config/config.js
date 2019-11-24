@@ -1,6 +1,4 @@
-/**
- * Created by allen on 2019/2/11.
- */
+console.log(123);
 let argv = require('yargs').argv
 let fs = require('fs')
 let colors = require('colors/safe');
