@@ -1,4 +1,4 @@
-console.log(123);
+
 let argv = require('yargs').argv
 let fs = require('fs')
 let colors = require('colors/safe');
@@ -31,7 +31,6 @@ if(argv.design){
 if(!argv.devdist){
     deleteDist(config)
 }else{
-    console.log(2222);
     if(argv.mode==='production'){
         deleteDist(config)
     }
