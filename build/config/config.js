@@ -2,7 +2,6 @@
 let argv = require('yargs').argv
 let fs = require('fs')
 let colors = require('colors/safe');
-let deleteDist = require('../task/deleteDist')
 let path = require('path')
 
 let config = {
@@ -27,12 +26,5 @@ let config = {
 }
 if(argv.design){
     config.port = config.designPort;
-}
-if(!argv.devdist){
-    deleteDist(config)
-}else{
-    if(argv.mode==='production'){
-        deleteDist(config)
-    }
 }
 module.exports = config

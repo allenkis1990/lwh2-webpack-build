@@ -4,9 +4,9 @@
 let fs = require('fs')
 let path = require('path')
 let colors = require('colors/safe');
-
-var parentModPath = path.resolve(__dirname, '..', '..', 'src/parentMods')
-var srcPath = path.resolve(__dirname, '..', '..', 'src/project')
+let config = require('../config/config')
+var parentModPath = path.resolve(__dirname, '..', '..', `src/${config.parentMods}`)
+var srcPath = path.resolve(__dirname, '..', '..', `src/${config.project}`)
 
 createInitAppModLoader().then(function(){
 
@@ -88,6 +88,7 @@ function createAppModLoader(appsArr,mapper){
         //console.log(content);
 
         var modLoaderPath = path.join(srcPath,app,'utils/mod-loader.js')
+        console.log(modLoaderPath);
         fs.writeFileSync(modLoaderPath,content,'utf8')
         console.log(colors.green(`创建${app}的mod-loader.js成功`))
     })
@@ -103,6 +104,7 @@ function getMapper(files){
         //console.log(file);
         var fileModHome = path.join(parentModPath,file,'.modHome')
         var modHome = fs.readFileSync(fileModHome,'utf8')
+        modHome = modHome.replace(/\s/g,'')
         var apps = modHome.split(',')
         apps.forEach(function(app){
             mapper[app] = mapper[app] || []
