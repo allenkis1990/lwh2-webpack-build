@@ -9,12 +9,12 @@
     "dev:dist": "set NODE_ENV=development && node build/pro-server.js --devdist",
     "build:dist": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js --devdist",
     "build": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js",
-    "copyMods":"cnpm install && node build/task/copyMods.js && node build/task/createModsLoader.js"
+    "copyMods": "cnpm install && node build/task/copyMods.js && node build/task/createModsLoader.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@liuweiheng19906666/lwh-demo2": "^1.0.1",
+    "@liuweiheng19906666/lwh-demo2": "^1.0.7",
     "art-template": "^4.13.2",
     "autoprefixer": "^9.3.1",
     "axios": "^0.18.0",
