@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "npm run copyMods && set NODE_ENV=development && node build/dev-server.js",
     "design": "set NODE_ENV=development && node build/dev-server.js --design",
-    "dev:dist": "set NODE_ENV=development && node build/pro-server.js --devdist",
-    "build:dist": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js --devdist",
+    "dev:dist": "set NODE_ENV=development && node build/pro-server.js",
     "build": "npm run copyMods && set NODE_ENV=production && webpack --mode production --config build/webpack.pro.config.js",
     "copyMods": "cnpm install && node build/task/copyMods.js && node build/task/createModsLoader.js"
   },

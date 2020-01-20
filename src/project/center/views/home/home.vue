@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="main" v-if="$route.name==='home'">
-            <div>parent Hello Home!11112</div>
+            <div>center Home!11112</div>
             <ul>
                 <li><a href="javascript:void(0)" @click="goState('home')">/center</a></li>
             </ul>

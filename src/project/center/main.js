@@ -1,5 +1,4 @@
 
-console.log('当前是否开发环境'+dev);
 //全局ajax拦截器
 import interceptors from '@center/utils/interceptors'
 import Vue from 'vue'

@@ -1,11 +1,7 @@
-let colors = require('colors/safe');
+
 const express = require('express')
-const merge = require('webpack-merge')
 const app = express()
 const webpack  = require('webpack')
-const path = require('path')
-//console.log(path.resolve(__dirname,'projects/project1/src'),12121212);
-// let webpackConfig = require('./webpack.dev.config')
 let webpackConfig = require('./webpack.dev.config')
 // webpackConfig.mode = 'development'
 webpackConfig.mode = 'development'
@@ -45,27 +41,6 @@ app.get('/',function(req,res){
 
 
 
-function tryHasConFigServer(url){
-    var res = true
-    try {
-        // require.resolve(actionSeverPath).start(app)
-        require.resolve(url)
-    }catch(e){
-        console.log(colors.red(`没有配置url为: 《${url}》 的服务`))
-        res = false
-    }
-    return res
-}
-
-var routerSeverPath = `./server/${config.project}/expressRouters/routers.js`
-var hasConfigRouters = tryHasConFigServer(routerSeverPath)
-
-if(hasConfigRouters){
-    // express前端路由
-    require(routerSeverPath)(app)
-}
-
-
 //纠正VUE history模式下刷新404问题
 let historyFallback = require('./task/historyFallback.js')
 historyFallback(app)
@@ -74,19 +49,9 @@ app.use(devMiddleware);
 
 
 //////////////////////代理////////////////////////////
-let proxyList = {
-    '/actions': {
-        target: 'http://192.168.28.248:8080/'
-        // changeOrigin: false
-    },
-    '/socket.io': {
-        target: 'http://192.168.28.248:8080/'
-        // changeOrigin: false
-    }
-}
 const proxyMiddleware = require('http-proxy-middleware')
-Object.keys(proxyList).forEach(function (context) {
-    var options = proxyList[context]
+Object.keys(config.proxyList).forEach(function (context) {
+    var options = config.proxyList[context]
     if (typeof options === 'string') {
         options = {target: options}
     }

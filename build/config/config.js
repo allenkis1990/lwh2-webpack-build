@@ -22,6 +22,16 @@ let config = {
     },
     build:{
         publicPath:'/'
+    },
+    proxyList:{
+        '/actions': {
+            target: 'http://192.168.28.248:8080/'
+            // changeOrigin: false
+        },
+        '/socket.io': {
+            target: 'http://192.168.28.248:8080/'
+            // changeOrigin: false
+        }
     }
 }
 if(argv.design){

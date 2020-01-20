@@ -7,13 +7,7 @@ let vueMapper = require('./vueMapper')
 let argv = require('yargs').argv
 const config = require('../config/config.js')
 module.exports = function(){
-    if(!argv.devdist){
-        deleteDist()
-    }else{
-        if(argv.mode==='production'){
-            deleteDist()
-        }
-    }
+    deleteDist()
     function deleteDist(){
         rimraf(config.dist, function (err) {
             if(err){

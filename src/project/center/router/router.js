@@ -13,9 +13,9 @@ export default new VueRouter({
     base: __dirname,
     routes: [
         {
-            path: dev?'/center':'/',
+            path: multiApp?'/center':'/',
             redirect: function () {
-                if(dev){
+                if(multiApp){
                     return '/center/home'
                 }else{
                     return '/home'
@@ -27,7 +27,7 @@ export default new VueRouter({
                 {
                     name: 'home',
                     path: 'home',
-                    component: () => import(/* webpackChunkName: "center/chunk/home" */'@center/views/home/home.vue')
+                    component: () => import('@center/views/home/home.vue')
                 }
             ]
         }
