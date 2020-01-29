@@ -13,7 +13,7 @@ let config = {
     mainDir:!argv.design?'../src':'../design',
     project:'project',
     dist:'dist',
-    port:'9900',
+    port:'9911',
     designPort:'8181',
     apps:['portal','center'],
     host:'127.0.0.1',

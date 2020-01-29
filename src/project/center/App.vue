@@ -36,7 +36,7 @@ export default {
 <style>
   /*@import '~nms/element-ui/lib/theme-chalk/message.css';*/
   /*@import '~nms/element-ui/lib/theme-chalk/icon.css';*/
-  @import '~nms/element-ui/lib/theme-chalk/index.css';/*完整*/
+  /*@import '~nms/element-ui/lib/theme-chalk/index.css';!*完整*!*/
   /*css 和 less都可以引入*/
   .fuck-enter,.fuck-leave-active{margin-left:-200px;}
   .fuck-enter-active,.fuck-leave-active{transition:all 1s ease;}
